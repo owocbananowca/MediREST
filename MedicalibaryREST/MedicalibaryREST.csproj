@@ -218,7 +218,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HelloWorldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LekarzController.cs" />
+    <Compile Include="Controllers\MagazynController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DTO\LekarzDTO.cs" />
+    <Compile Include="DTO\LekarzNowyDTO.cs" />
+    <Compile Include="DTO\MagazynDTO.cs" />
+    <Compile Include="DTO\MagazynNowyDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
