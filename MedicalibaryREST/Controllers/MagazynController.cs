@@ -52,7 +52,7 @@ namespace MedicalibaryREST.Controllers
             JsonConvert.SerializeObject(lista);
             return Ok(lista);
         }
-    
+
         //jeden
         [HttpGet]
         [Route("{lid:int:min(1)}/{id:int:min(1)}")]
@@ -111,6 +111,34 @@ namespace MedicalibaryREST.Controllers
 
             db.magazyn.Add(magazyn);
 
+            try
+            {
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return Content(HttpStatusCode.PreconditionFailed, "");
+            }
+        }
+
+        //Update/Replace
+        [HttpPut]
+        [Route("zmiana/{lid:int:min(1)}/{id:int:min(1)}")]
+        public IHttpActionResult Zmien(MagazynNowyDTO viewModel, int lid, int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (!db.magazyn.Any(e => e.id == id))
+                return NotFound();
+
+            magazyn result = db.magazyn.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+
+            result.max_rozmiar = viewModel.max_rozmiar;
+            result.nazwa = viewModel.nazwa;
+            result.priorytet = viewModel.priorytet;
+            
             try
             {
                 db.SaveChanges();
