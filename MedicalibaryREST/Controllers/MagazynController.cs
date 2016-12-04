@@ -33,12 +33,26 @@ namespace MedicalibaryREST.Controllers
             }
             ).Where(e => e.lekarz == lid).ToList();
 
-            if (result == null)
+            List<MagazynWyslijDTO> lista = new List<MagazynWyslijDTO>();
+
+            foreach (var list in result)
+            {
+                lista.Add(new MagazynWyslijDTO()
+                {
+                    id = list.id,
+                    nazwa = list.nazwa,
+                    max_rozmiar = list.max_rozmiar,
+                    priorytet = list.priorytet
+                });
+            }
+
+            if (lista == null)
                 return NotFound();
 
-            JsonConvert.SerializeObject(result);
-            return Ok(result);
+            JsonConvert.SerializeObject(lista);
+            return Ok(lista);
         }
+    
         //jeden
         [HttpGet]
         [Route("{lid:int:min(1)}/{id:int:min(1)}")]
@@ -57,11 +71,24 @@ namespace MedicalibaryREST.Controllers
             }
             ).Where(e => e.lekarz == lid && e.id == id).ToList();
 
-            if (result == null)
+            List<MagazynWyslijDTO> lista = new List<MagazynWyslijDTO>();
+
+            foreach (var list in result)
+            {
+                lista.Add(new MagazynWyslijDTO()
+                {
+                    id = list.id,
+                    nazwa = list.nazwa,
+                    max_rozmiar = list.max_rozmiar,
+                    priorytet = list.priorytet
+                });
+            }
+
+            if (lista == null)
                 return NotFound();
 
-            JsonConvert.SerializeObject(result);
-            return Ok(result);
+            JsonConvert.SerializeObject(lista);
+            return Ok(lista);
         }
         //dodaj
         [HttpPost]

@@ -221,10 +221,15 @@
     <Compile Include="Controllers\LekarzController.cs" />
     <Compile Include="Controllers\MagazynController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\ZasadaController.cs" />
     <Compile Include="DTO\LekarzDTO.cs" />
     <Compile Include="DTO\LekarzNowyDTO.cs" />
     <Compile Include="DTO\MagazynDTO.cs" />
     <Compile Include="DTO\MagazynNowyDTO.cs" />
+    <Compile Include="DTO\MagazynWyslijDTO.cs" />
+    <Compile Include="DTO\ZasadaDTO.cs" />
+    <Compile Include="DTO\ZasadaNowaDTO.cs" />
+    <Compile Include="DTO\ZasadaWyslijDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
