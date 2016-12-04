@@ -135,5 +135,34 @@ namespace MedicalibaryREST.Controllers
                 return Content(HttpStatusCode.PreconditionFailed, "");
             }
         }
+
+        [HttpPut]
+        [Route("zmiana/{lid:int:min(1)}/{id:int:min(1)}")]
+        public IHttpActionResult Zmien(ZasadaNowaDTO viewModel, int lid, int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (!db.zasada.Any(e => e.id == id))
+                return NotFound();
+
+            zasada result = db.zasada.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+
+            result.id_magazyn = viewModel.id_magazynu;
+            result.nazwa_atrybutu = viewModel.nazwa_atrybutu;
+            result.operacja_porownania = viewModel.operacja_porownania;
+            result.wartosc_porownania = viewModel.wartosc_porownania;
+            result.spelnialnosc_operacji = viewModel.spelnialnosc_operacji;
+
+            try
+            {
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return Content(HttpStatusCode.PreconditionFailed, "");
+            }
+        }
     }
 }
