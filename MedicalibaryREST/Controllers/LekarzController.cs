@@ -84,5 +84,33 @@ namespace MedicalibaryREST.Controllers
                 return Content(HttpStatusCode.PreconditionFailed, "");
             }
         }
+
+        [HttpPut]
+        [Route("zmien")]
+        public IHttpActionResult Zmien(LekarzNowyDTO viewModel, int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+
+            if (!db.lekarz.Any(e => e.id == id))
+                return NotFound();
+
+
+            lekarz result = db.lekarz.FirstOrDefault(e => e.id == id);
+
+
+            result.nazwa = viewModel.Nazwa;
+
+            try
+            {
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return Content(HttpStatusCode.PreconditionFailed, "");
+            }
+        }
     }
 }

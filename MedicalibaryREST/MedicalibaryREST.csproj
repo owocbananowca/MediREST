@@ -220,6 +220,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LekarzController.cs" />
     <Compile Include="Controllers\MagazynController.cs" />
+    <Compile Include="Controllers\PacjentController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\ZasadaController.cs" />
     <Compile Include="DTO\LekarzDTO.cs" />
