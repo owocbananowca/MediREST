@@ -8,41 +8,39 @@ using MedicalibaryREST.Models;
 using MedicalibaryREST.DTO;
 using Newtonsoft.Json;
 
-
 namespace MedicalibaryREST.Controllers
 {
-    [RoutePrefix("magazyn")]
-    public class MagazynController : ApiController
+    [RoutePrefix("parametr")]
+    public class ParametrController : ApiController
     {
         Model_Medicalibary_v1 db = new Model_Medicalibary_v1();
-        //lista
+        //lista wszystkich
         [HttpGet]
         [Route("lista/{lid:int:min(1)}")]
-        public IHttpActionResult Magazyny(int lid)
+        public IHttpActionResult Parametry(int lid)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-            
-            var result = db.magazyn.Select(e => new MagazynDTO()
+
+            var result = db.parametr.Select(e => new ParametrDTO()
             {
-                lekarz = lid,
                 id = e.id,
+                id_lekarz = e.id_lekarz,
                 nazwa = e.nazwa,
-                max_rozmiar = e.max_rozmiar,
-                priorytet = e.priorytet
-            }
-            ).Where(e => e.lekarz == lid).ToList();
+                typ = e.typ,
+                wartosc_domyslna = e.wartosc_domyslna
+            }).Where(e => e.id_lekarz == lid).ToList();
 
-            List<MagazynWyslijDTO> lista = new List<MagazynWyslijDTO>();
+            List<ParametrNowyWyslij> lista = new List<ParametrNowyWyslij>();
 
-            foreach (var list in result)
+            foreach (var e in result)
             {
-                lista.Add(new MagazynWyslijDTO()
+                lista.Add(new ParametrNowyWyslij()
                 {
-                    id = list.id,
-                    nazwa = list.nazwa,
-                    max_rozmiar = list.max_rozmiar,
-                    priorytet = list.priorytet
+                    id = e.id,
+                    nazwa = e.nazwa,
+                    typ = e.typ,
+                    wartosc_domyslna = e.wartosc_domyslna
                 });
             }
 
@@ -52,35 +50,33 @@ namespace MedicalibaryREST.Controllers
             JsonConvert.SerializeObject(lista);
             return Ok(lista);
         }
-
         //jeden
         [HttpGet]
         [Route("{lid:int:min(1)}/{id:int:min(1)}")]
-        public IHttpActionResult Magazyn(int lid, int id)
+        public IHttpActionResult Parametr(int lid, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var result = db.magazyn.Select(e => new MagazynDTO()
+            var result = db.parametr.Select(e => new ParametrDTO()
             {
-                lekarz = lid,
                 id = e.id,
+                id_lekarz = e.id_lekarz,
                 nazwa = e.nazwa,
-                max_rozmiar = e.max_rozmiar,
-                priorytet = e.priorytet
-            }
-            ).Where(e => e.lekarz == lid && e.id == id).ToList();
+                typ = e.typ,
+                wartosc_domyslna = e.wartosc_domyslna
+            }).Where(e => e.id_lekarz == lid && e.id == id).ToList();
 
-            List<MagazynWyslijDTO> lista = new List<MagazynWyslijDTO>();
+            List<ParametrNowyWyslij> lista = new List<ParametrNowyWyslij>();
 
-            foreach (var list in result)
+            foreach (var e in result)
             {
-                lista.Add(new MagazynWyslijDTO()
+                lista.Add(new ParametrNowyWyslij()
                 {
-                    id = list.id,
-                    nazwa = list.nazwa,
-                    max_rozmiar = list.max_rozmiar,
-                    priorytet = list.priorytet
+                    id = e.id,
+                    nazwa = e.nazwa,
+                    typ = e.typ,
+                    wartosc_domyslna = e.wartosc_domyslna
                 });
             }
 
@@ -93,23 +89,23 @@ namespace MedicalibaryREST.Controllers
         //dodaj
         [HttpPost]
         [Route("{lid:int:min(1)}/nowy")]
-        public IHttpActionResult Nowy(MagazynNowyDTO viewModel, int lid)
+        public IHttpActionResult Nowy(ParametrNowyDTO viewModel, int lid)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
-
-            if (db.magazyn.Any(e => e.nazwa == viewModel.nazwa))
+            /*
+            if (db.pacjent.Any(e => e.pesel == viewModel.pesel))
                 return Conflict();
-
-            var magazyn = new magazyn()
+            */
+            var parametr = new parametr()
             {
+                id_lekarz = viewModel.id_lekarz,
                 nazwa = viewModel.nazwa,
-                max_rozmiar = viewModel.max_rozmiar,
-                priorytet = viewModel.priorytet,
-                id_lekarz = lid
+                typ = viewModel.typ,
+                wartosc_domyslna = viewModel.wartosc_domyslna
             };
 
-            db.magazyn.Add(magazyn);
+            db.parametr.Add(parametr);
 
             try
             {
@@ -121,24 +117,23 @@ namespace MedicalibaryREST.Controllers
                 return Content(HttpStatusCode.PreconditionFailed, "");
             }
         }
-
-        //Update/Replace
+        //zmien
         [HttpPut]
         [Route("zmiana/{lid:int:min(1)}/{id:int:min(1)}")]
-        public IHttpActionResult Zmien(MagazynNowyDTO viewModel, int lid, int id)
+        public IHttpActionResult Zmien(ParametrNowyDTO viewModel, int lid, int id)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (!db.magazyn.Any(e => e.id == id))
+            if (!db.pacjent.Any(e => e.id == id))
                 return NotFound();
 
-            magazyn result = db.magazyn.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            parametr parametr = db.parametr.FirstOrDefault(e=>e.id == id && e.id_lekarz == lid);
 
-            result.max_rozmiar = viewModel.max_rozmiar;
-            result.nazwa = viewModel.nazwa;
-            result.priorytet = viewModel.priorytet;
-            
+            parametr.nazwa = viewModel.nazwa;
+            parametr.typ = viewModel.typ;
+            parametr.wartosc_domyslna = viewModel.wartosc_domyslna;
+
             try
             {
                 db.SaveChanges();

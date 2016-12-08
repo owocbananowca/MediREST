@@ -221,6 +221,7 @@
     <Compile Include="Controllers\LekarzController.cs" />
     <Compile Include="Controllers\MagazynController.cs" />
     <Compile Include="Controllers\PacjentController.cs" />
+    <Compile Include="Controllers\ParametrController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WizytaController.cs" />
     <Compile Include="Controllers\ZasadaController.cs" />
@@ -254,6 +255,7 @@
     <Compile Include="Models\Model_Medicalibary_v1.cs" />
     <Compile Include="Models\pacjent.cs" />
     <Compile Include="Models\parametr.cs" />
+    <Compile Include="Models\przypisanie_parametru.cs" />
     <Compile Include="Models\wizyta.cs" />
     <Compile Include="Models\zasada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
