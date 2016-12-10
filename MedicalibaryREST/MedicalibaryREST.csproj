@@ -222,7 +222,9 @@
     <Compile Include="Controllers\MagazynController.cs" />
     <Compile Include="Controllers\PacjentController.cs" />
     <Compile Include="Controllers\ParametrController.cs" />
+    <Compile Include="Controllers\PrzypisanieParametruController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WersjaController.cs" />
     <Compile Include="Controllers\WizytaController.cs" />
     <Compile Include="Controllers\ZasadaController.cs" />
     <Compile Include="DTO\LekarzDTO.cs" />
@@ -236,6 +238,12 @@
     <Compile Include="DTO\ParametrDTO.cs" />
     <Compile Include="DTO\ParametrNowyDTO.cs" />
     <Compile Include="DTO\ParametrNowyWyslij.cs" />
+    <Compile Include="DTO\Przypisanie_ParametruDTO.cs" />
+    <Compile Include="DTO\Przypisanie_ParametruNowyDTO.cs" />
+    <Compile Include="DTO\Przypisanie_ParametruWyslijDTO.cs" />
+    <Compile Include="DTO\WersjaDTO.cs" />
+    <Compile Include="DTO\WersjaNowaDTO.cs" />
+    <Compile Include="DTO\WersjaWyslij.cs" />
     <Compile Include="DTO\WizytaDTO.cs" />
     <Compile Include="DTO\WizytaNowaDTO.cs" />
     <Compile Include="DTO\WizytaWyslijDTO.cs" />
