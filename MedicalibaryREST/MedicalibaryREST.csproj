@@ -233,6 +233,9 @@
     <Compile Include="DTO\PacjentDTO.cs" />
     <Compile Include="DTO\PacjentNowyDTO.cs" />
     <Compile Include="DTO\PacjentWyslijDTO.cs" />
+    <Compile Include="DTO\ParametrDTO.cs" />
+    <Compile Include="DTO\ParametrNowyDTO.cs" />
+    <Compile Include="DTO\ParametrNowyWyslij.cs" />
     <Compile Include="DTO\WizytaDTO.cs" />
     <Compile Include="DTO\WizytaNowaDTO.cs" />
     <Compile Include="DTO\WizytaWyslijDTO.cs" />
@@ -249,13 +252,16 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\dane_modyfikacji.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\lekarz.cs" />
     <Compile Include="Models\magazyn.cs" />
     <Compile Include="Models\Model_Medicalibary_v1.cs" />
+    <Compile Include="Models\modyfikacja.cs" />
     <Compile Include="Models\pacjent.cs" />
     <Compile Include="Models\parametr.cs" />
     <Compile Include="Models\przypisanie_parametru.cs" />
+    <Compile Include="Models\wersja.cs" />
     <Compile Include="Models\wizyta.cs" />
     <Compile Include="Models\zasada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -349,7 +355,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50456</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

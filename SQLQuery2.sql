@@ -24,11 +24,16 @@ create table modyfikacja
 
 create table dane_modyfikacji
 (
-	id int identity,
+	id int identity(1,1) primary key,
 	id_modyfikacja int foreign key references modyfikacja(id),
+	id_lekarz int foreign key references lekarz(id),
 	nazwa_danej varchar,
 	stara_wartosc varchar,
 	nowa_wartosc varchar
 )
+
+alter table dane_modyfikacji add id_lekarz int foreign key references lekarz(id)
+
+drop table dane_modyfikacji
 
 SELECT * FROM sysobjects WHERE xtype='U' 
