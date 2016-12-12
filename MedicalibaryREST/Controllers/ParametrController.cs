@@ -125,7 +125,7 @@ namespace MedicalibaryREST.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (!db.pacjent.Any(e => e.id == id))
+            if (!db.parametr.Any(e => e.id == id))
                 return NotFound();
 
             parametr parametr = db.parametr.FirstOrDefault(e=>e.id == id && e.id_lekarz == lid);

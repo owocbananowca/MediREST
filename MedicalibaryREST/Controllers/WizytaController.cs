@@ -24,7 +24,7 @@ namespace MedicalibaryREST.Controllers
             var result = db.wizyta.Select(e => new WizytaDTO()
             {
                 id = e.id,
-                id_lekarz = e.id_lekarz,
+                id_lekarz = lid,
                 id_pacjent = e.id_pacjent,
                 data_wizyty = e.data_wizyty,
                 komentarz = e.komentarz
