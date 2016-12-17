@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 
 namespace MedicalibaryREST.Controllers
 {
+    [RoutePrefix("wizyta")]
     public class WizytaController : ApiController
     {
         Model_Medicalibary_v1 db = new Model_Medicalibary_v1();
@@ -202,6 +203,31 @@ namespace MedicalibaryREST.Controllers
             wizyta result = db.wizyta.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
 
             result.komentarz += viewModel.komentarz;
+
+            try
+            {
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return Content(HttpStatusCode.PreconditionFailed, "");
+            }
+        }
+
+        [HttpDelete]
+        [Route("usun/{lid:int:min(1)}/{id:int:min(1)}")]
+        public IHttpActionResult usun(int lid, int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (!db.dane_modyfikacji.Any(e => e.id == id))
+                return NotFound();
+
+            wizyta result = db.wizyta.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+
+            db.wizyta.Remove(result);
 
             try
             {

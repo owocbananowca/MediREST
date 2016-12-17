@@ -112,5 +112,30 @@ namespace MedicalibaryREST.Controllers
                 return Content(HttpStatusCode.PreconditionFailed, "");
             }
         }
+
+        [HttpDelete]
+        [Route("usun/{id:int:min(1)}")]
+        public IHttpActionResult usun(int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (!db.lekarz.Any(e => e.id == id))
+                return NotFound();
+
+            lekarz result = db.lekarz.FirstOrDefault(e => e.id == id);
+
+            db.lekarz.Remove(result);
+
+            try
+            {
+                db.SaveChanges();
+                return Ok();
+            }
+            catch
+            {
+                return Content(HttpStatusCode.PreconditionFailed, "");
+            }
+        }
     }
 }
