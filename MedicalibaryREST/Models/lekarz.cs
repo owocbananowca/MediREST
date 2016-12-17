@@ -12,9 +12,13 @@ namespace MedicalibaryREST.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public lekarz()
         {
+            dane_modyfikacji = new HashSet<dane_modyfikacji>();
             magazyn = new HashSet<magazyn>();
+            modyfikacja = new HashSet<modyfikacja>();
             pacjent = new HashSet<pacjent>();
             parametr = new HashSet<parametr>();
+            przypisanie_parametru = new HashSet<przypisanie_parametru>();
+            wersja = new HashSet<wersja>();
             wizyta = new HashSet<wizyta>();
             zasada = new HashSet<zasada>();
         }
@@ -25,13 +29,25 @@ namespace MedicalibaryREST.Models
         public string nazwa { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<dane_modyfikacji> dane_modyfikacji { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<magazyn> magazyn { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<modyfikacja> modyfikacja { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<pacjent> pacjent { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<parametr> parametr { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<przypisanie_parametru> przypisanie_parametru { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wersja> wersja { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<wizyta> wizyta { get; set; }

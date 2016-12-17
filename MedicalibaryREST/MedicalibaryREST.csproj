@@ -216,9 +216,48 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DaneModyfikacjiController.cs" />
     <Compile Include="Controllers\HelloWorldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LekarzController.cs" />
+    <Compile Include="Controllers\MagazynController.cs" />
+    <Compile Include="Controllers\ModyfikacjaController.cs" />
+    <Compile Include="Controllers\PacjentController.cs" />
+    <Compile Include="Controllers\ParametrController.cs" />
+    <Compile Include="Controllers\PrzypisanieParametruController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\WersjaController.cs" />
+    <Compile Include="Controllers\WizytaController.cs" />
+    <Compile Include="Controllers\ZasadaController.cs" />
+    <Compile Include="DTO\DaneModyfikacjiDTO.cs" />
+    <Compile Include="DTO\DaneModyfikacjiNoweDTO.cs" />
+    <Compile Include="DTO\DaneModyfikacjiWyslijDTO.cs" />
+    <Compile Include="DTO\LekarzDTO.cs" />
+    <Compile Include="DTO\LekarzNowyDTO.cs" />
+    <Compile Include="DTO\MagazynDTO.cs" />
+    <Compile Include="DTO\MagazynNowyDTO.cs" />
+    <Compile Include="DTO\MagazynWyslijDTO.cs" />
+    <Compile Include="DTO\ModyfikacjaDTO.cs" />
+    <Compile Include="DTO\ModyfikacjaNowaDTO.cs" />
+    <Compile Include="DTO\ModyfikacjaWyslijDTO.cs" />
+    <Compile Include="DTO\PacjentDTO.cs" />
+    <Compile Include="DTO\PacjentNowyDTO.cs" />
+    <Compile Include="DTO\PacjentWyslijDTO.cs" />
+    <Compile Include="DTO\ParametrDTO.cs" />
+    <Compile Include="DTO\ParametrNowyDTO.cs" />
+    <Compile Include="DTO\ParametrNowyWyslij.cs" />
+    <Compile Include="DTO\Przypisanie_ParametruDTO.cs" />
+    <Compile Include="DTO\Przypisanie_ParametruNowyDTO.cs" />
+    <Compile Include="DTO\Przypisanie_ParametruWyslijDTO.cs" />
+    <Compile Include="DTO\WersjaDTO.cs" />
+    <Compile Include="DTO\WersjaNowaDTO.cs" />
+    <Compile Include="DTO\WersjaWyslij.cs" />
+    <Compile Include="DTO\WizytaDTO.cs" />
+    <Compile Include="DTO\WizytaNowaDTO.cs" />
+    <Compile Include="DTO\WizytaWyslijDTO.cs" />
+    <Compile Include="DTO\ZasadaDTO.cs" />
+    <Compile Include="DTO\ZasadaNowaDTO.cs" />
+    <Compile Include="DTO\ZasadaWyslijDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -229,12 +268,16 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\dane_modyfikacji.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\lekarz.cs" />
     <Compile Include="Models\magazyn.cs" />
     <Compile Include="Models\Model_Medicalibary_v1.cs" />
+    <Compile Include="Models\modyfikacja.cs" />
     <Compile Include="Models\pacjent.cs" />
     <Compile Include="Models\parametr.cs" />
+    <Compile Include="Models\przypisanie_parametru.cs" />
+    <Compile Include="Models\wersja.cs" />
     <Compile Include="Models\wizyta.cs" />
     <Compile Include="Models\zasada.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -314,6 +357,9 @@
       <DependentUpon>201611272003058_initialcreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -328,7 +374,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50456</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

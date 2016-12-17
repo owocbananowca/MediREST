@@ -12,6 +12,7 @@ namespace MedicalibaryREST.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public pacjent()
         {
+            przypisanie_parametru = new HashSet<przypisanie_parametru>();
             wizyta = new HashSet<wizyta>();
         }
 
@@ -39,6 +40,9 @@ namespace MedicalibaryREST.Models
         public virtual lekarz lekarz { get; set; }
 
         public virtual magazyn magazyn { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<przypisanie_parametru> przypisanie_parametru { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<wizyta> wizyta { get; set; }
