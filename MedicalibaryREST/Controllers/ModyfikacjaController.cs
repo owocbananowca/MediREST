@@ -192,7 +192,7 @@ namespace MedicalibaryREST.Controllers
 
             var mod = new modyfikacja()
             {
-                id_lekarz = e.id_lekarz,
+                id_lekarz = lid,
                 id_wersji = e.id_wersji,
                 id_obiekt = e.id_obiekt,
                 obiekt = e.obiekt,
@@ -223,8 +223,7 @@ namespace MedicalibaryREST.Controllers
                 return NotFound();
 
             modyfikacja result = db.modyfikacja.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
-
-            result.id_lekarz = lid;
+            
             result.id_obiekt = viewModel.id_obiekt;
             result.id_wersji = viewModel.id_wersji;
             result.obiekt = viewModel.obiekt;

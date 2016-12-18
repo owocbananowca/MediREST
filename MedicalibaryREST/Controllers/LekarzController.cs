@@ -86,7 +86,7 @@ namespace MedicalibaryREST.Controllers
         }
 
         [HttpPut]
-        [Route("zmien")]
+        [Route("zmien/{id:int:min(1)}")]
         public IHttpActionResult Zmien(LekarzNowyDTO viewModel, int id)
         {
             if (!ModelState.IsValid)

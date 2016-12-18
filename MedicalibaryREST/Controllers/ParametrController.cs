@@ -99,7 +99,7 @@ namespace MedicalibaryREST.Controllers
             */
             var parametr = new parametr()
             {
-                id_lekarz = viewModel.id_lekarz,
+                id_lekarz = lid,
                 nazwa = viewModel.nazwa,
                 typ = viewModel.typ,
                 wartosc_domyslna = viewModel.wartosc_domyslna

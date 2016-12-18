@@ -148,7 +148,10 @@ namespace MedicalibaryREST.Controllers
             if (!db.pacjent.Any(e => e.id == id))
                 return NotFound();
 
-            pacjent result = db.pacjent.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            var result = db.pacjent.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
+
+            if (result == null)
+                return NotFound();
 
             result.id_magazyn = viewModel.id_magazyn;
             result.ilosc_dodatkowych_parametrow = viewModel.ilosc_dodatkowych_parametrow;
@@ -157,7 +160,7 @@ namespace MedicalibaryREST.Controllers
             result.numer_koperty = viewModel.numer_koperty;
             result.pesel = viewModel.pesel;
             result.aktywny = viewModel.aktywny;
-
+            
             try
             {
                 db.SaveChanges();
@@ -227,7 +230,7 @@ namespace MedicalibaryREST.Controllers
             if (!db.pacjent.Any(e => e.id == id))
                 return NotFound();
 
-            pacjent result = db.pacjent.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            pacjent result = db.pacjent.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
 
             db.pacjent.Remove(result);
 

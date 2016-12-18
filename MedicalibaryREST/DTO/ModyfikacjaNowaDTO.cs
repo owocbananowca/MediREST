@@ -9,7 +9,7 @@ namespace MedicalibaryREST.DTO
 {
     public class ModyfikacjaNowaDTO
     {
-        public int? id_lekarz { get; set; }
+        //public int? id_lekarz { get; set; }
 
         public int? id_wersji { get; set; }
 
