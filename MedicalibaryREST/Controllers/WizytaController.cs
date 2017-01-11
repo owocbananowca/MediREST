@@ -169,6 +169,7 @@ namespace MedicalibaryREST.Controllers
 
             wizyta result = db.wizyta.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
 
+            result.id_pacjent = viewModel.id_pacjent;
             result.data_wizyty = viewModel.data_wizyty;
             result.komentarz = viewModel.komentarz;
             //zmiana pacjenta?
