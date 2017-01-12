@@ -28,7 +28,8 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = lid,
                 id_pacjent = e.id_pacjent,
                 data_wizyty = e.data_wizyty,
-                komentarz = e.komentarz
+                komentarz = e.komentarz,
+                koniec_wizyty = e.koniec_wizyty
             }
             ).Where(e => e.id_lekarz == lid).ToList();
 
@@ -41,7 +42,8 @@ namespace MedicalibaryREST.Controllers
                     id = e.id,
                     id_pacjent = e.id_pacjent,
                     data_wizyty = e.data_wizyty,
-                    komentarz = e.komentarz
+                    komentarz = e.komentarz,
+                    koniec_wizyty = e.koniec_wizyty
                 });
             }
 
@@ -66,7 +68,8 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = e.id_lekarz,
                 id_pacjent = e.id_pacjent,
                 data_wizyty = e.data_wizyty,
-                komentarz = e.komentarz
+                komentarz = e.komentarz,
+                koniec_wizyty = e.koniec_wizyty
             }
             ).Where(e => e.id_lekarz == lid && e.id_pacjent == id).ToList();
 
@@ -79,7 +82,8 @@ namespace MedicalibaryREST.Controllers
                     id = e.id,
                     id_pacjent = e.id_pacjent,
                     data_wizyty = e.data_wizyty,
-                    komentarz = e.komentarz
+                    komentarz = e.komentarz,
+                    koniec_wizyty = e.koniec_wizyty
                 });
             }
 
@@ -103,7 +107,8 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = e.id_lekarz,
                 id_pacjent = e.id_pacjent,
                 data_wizyty = e.data_wizyty,
-                komentarz = e.komentarz
+                komentarz = e.komentarz,
+                koniec_wizyty = e.koniec_wizyty
             }
             ).Where(e => e.id == id).ToList();
 
@@ -116,7 +121,8 @@ namespace MedicalibaryREST.Controllers
                     id = e.id,
                     id_pacjent = e.id_pacjent,
                     data_wizyty = e.data_wizyty,
-                    komentarz = e.komentarz
+                    komentarz = e.komentarz,
+                    koniec_wizyty = e.koniec_wizyty
                 });
             }
 
@@ -141,7 +147,8 @@ namespace MedicalibaryREST.Controllers
             {
                 id_pacjent = viewModel.id_pacjent,
                 data_wizyty = viewModel.data_wizyty,
-                komentarz = viewModel.komentarz
+                komentarz = viewModel.komentarz,
+                koniec_wizyty = viewModel.koniec_wizyty
             };
 
             db.wizyta.Add(wizyta);
@@ -172,7 +179,7 @@ namespace MedicalibaryREST.Controllers
             result.id_pacjent = viewModel.id_pacjent;
             result.data_wizyty = viewModel.data_wizyty;
             result.komentarz = viewModel.komentarz;
-            //zmiana pacjenta?
+            result.koniec_wizyty = viewModel.koniec_wizyty;
 
             try
             {
