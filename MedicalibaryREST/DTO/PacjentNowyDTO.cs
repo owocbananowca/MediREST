@@ -16,8 +16,8 @@ namespace MedicalibaryREST.DTO
         public string imie { get; set; }
         [StringLength(50)]
         public string nazwisko { get; set; }
-        [Column(TypeName = "numeric")]
-        public decimal? pesel { get; set; }
+        [StringLength(11)]
+        public string pesel { get; set; }
         public int? numer_koperty { get; set; }
         public int? ilosc_dodatkowych_parametrow { get; set; }
     }

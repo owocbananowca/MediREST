@@ -127,7 +127,7 @@ namespace MedicalibaryREST.Models
 
             modelBuilder.Entity<pacjent>()
                 .Property(e => e.pesel)
-                .HasPrecision(11, 0);
+                .IsUnicode(false);
 
             modelBuilder.Entity<pacjent>()
                 .HasMany(e => e.przypisanie_parametru)
