@@ -12,7 +12,7 @@ namespace MedicalibaryREST.DTO
     {
         //public int? id_lekarz { get; set; }
 
-        [StringLength(1)]
+        [StringLength(16)]
         public string typ { get; set; }
 
         [StringLength(50)]
