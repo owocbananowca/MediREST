@@ -42,6 +42,10 @@ namespace MedicalibaryREST.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<lekarz>()
+                .Property(e => e.haslo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<lekarz>()
                 .HasMany(e => e.dane_modyfikacji)
                 .WithOptional(e => e.lekarz)
                 .HasForeignKey(e => e.id_lekarz);

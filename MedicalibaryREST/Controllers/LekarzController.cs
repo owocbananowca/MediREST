@@ -26,7 +26,8 @@ namespace MedicalibaryREST.Controllers
             var result = db.lekarz.Select(e => new LekarzDTO()
             {
                 Id = e.id,
-                Nazwa = e.nazwa
+                Nazwa = e.nazwa,
+                Haslo = e.haslo
             }
             ).ToList();
 
@@ -47,7 +48,8 @@ namespace MedicalibaryREST.Controllers
             var result = db.lekarz.Select(e => new LekarzDTO()
             {
                 Id = e.id,
-                Nazwa = e.nazwa
+                Nazwa = e.nazwa,
+                Haslo = e.haslo
             }).Where(e => e.Id == id).ToList();
 
             if (result == null)
@@ -69,7 +71,8 @@ namespace MedicalibaryREST.Controllers
 
             var lekarz = new lekarz()
             { 
-                nazwa = viewModel.Nazwa
+                nazwa = viewModel.Nazwa,
+                haslo = viewModel.Haslo
             };
 
             db.lekarz.Add(lekarz);
@@ -101,6 +104,7 @@ namespace MedicalibaryREST.Controllers
 
 
             result.nazwa = viewModel.Nazwa;
+            result.haslo = viewModel.Haslo;
 
             try
             {
