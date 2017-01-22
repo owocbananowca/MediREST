@@ -69,14 +69,39 @@ namespace MedicalibaryREST.Controllers
             if (db.lekarz.Any(e => e.nazwa == viewModel.Nazwa))
                 return Conflict();
 
+            int random = 0;
+            Random RNG = new Random();
+
+            var result = db.lekarz.Select(e => new LekarzDTO()
+            {
+                Id = e.id
+            }).ToList();
+
+            List<int> ints = result.Select(e => e.Id).ToList();
+
+            bool isNotInList = true;
+            int temp = 0;//RNG.Next();
+
+            while (isNotInList)
+            {
+                temp = RNG.Next();
+                isNotInList = ints.IndexOf(temp) != -1;
+                random = temp;
+                if(ints.Count==0)
+                {
+                    isNotInList = true;
+                }
+            }
+
             var lekarz = new lekarz()
-            { 
+            {
+                id = temp,
                 nazwa = viewModel.Nazwa,
                 haslo = viewModel.Haslo
             };
+            string dane = lekarz.id.ToString() + " " + temp.ToString();
 
             db.lekarz.Add(lekarz);
-
             try
             {
                 db.SaveChanges();
@@ -84,7 +109,7 @@ namespace MedicalibaryREST.Controllers
             }
             catch
             {
-                return Content(HttpStatusCode.PreconditionFailed, "");
+                return Content(HttpStatusCode.PreconditionFailed, dane);
             }
         }
 

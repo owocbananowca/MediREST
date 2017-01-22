@@ -38,6 +38,11 @@ namespace MedicalibaryREST.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<lekarz>()
+                .HasKey(e => e.id)
+                .Property(e => e.id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
+            modelBuilder.Entity<lekarz>()
                 .Property(e => e.nazwa)
                 .IsUnicode(false);
 
