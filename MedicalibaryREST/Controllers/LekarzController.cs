@@ -80,9 +80,9 @@ namespace MedicalibaryREST.Controllers
             List<int> ints = result.Select(e => e.Id).ToList();
 
             bool isNotInList = true;
-            int temp = 0;//RNG.Next();
+            int temp = RNG.Next();
 
-            while (isNotInList)
+            while (ints.Count > 0 && isNotInList)
             {
                 temp = RNG.Next();
                 isNotInList = ints.IndexOf(temp) != -1;
@@ -99,7 +99,7 @@ namespace MedicalibaryREST.Controllers
                 nazwa = viewModel.Nazwa,
                 haslo = viewModel.Haslo
             };
-            string dane = lekarz.id.ToString() + " " + temp.ToString();
+            //string dane = lekarz.id.ToString() + " " + temp.ToString();
 
             db.lekarz.Add(lekarz);
             try
@@ -109,7 +109,7 @@ namespace MedicalibaryREST.Controllers
             }
             catch
             {
-                return Content(HttpStatusCode.PreconditionFailed, dane);
+                return Content(HttpStatusCode.PreconditionFailed, "");
             }
         }
 
