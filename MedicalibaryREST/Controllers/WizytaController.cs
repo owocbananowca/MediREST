@@ -140,8 +140,8 @@ namespace MedicalibaryREST.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (db.wizyta.Any(e => e.data_wizyty == viewModel.data_wizyty))
-                return Conflict();
+            //if (db.wizyta.Any(e => e.data_wizyty == viewModel.data_wizyty))
+            //    return Conflict();
 
             var wizyta = new wizyta()
             {
