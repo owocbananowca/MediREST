@@ -28,6 +28,8 @@ namespace MedicalibaryREST.Models
         [StringLength(50)]
         public string wartosc_domyslna { get; set; }
 
+        public string jednostka { get; set; }
+
         public virtual lekarz lekarz { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

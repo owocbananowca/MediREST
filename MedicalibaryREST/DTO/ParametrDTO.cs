@@ -21,5 +21,7 @@ namespace MedicalibaryREST.DTO
 
         [StringLength(50)]
         public string wartosc_domyslna { get; set; }
+
+        public string jednostka { get; set; }
     }
 }

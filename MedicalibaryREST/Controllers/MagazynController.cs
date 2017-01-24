@@ -98,8 +98,8 @@ namespace MedicalibaryREST.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (db.magazyn.Any(e => e.nazwa == viewModel.nazwa))
-                return Conflict();
+            //if (db.magazyn.Any(e => e.nazwa == viewModel.nazwa))
+            //   return Conflict();
 
             var magazyn = new magazyn()
             {

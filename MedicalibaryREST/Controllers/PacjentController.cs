@@ -32,7 +32,7 @@ namespace MedicalibaryREST.Controllers
                 pesel = e.pesel,
                 numer_koperty = e.numer_koperty,
                 ilosc_dodatkowych_parametrow = e.ilosc_dodatkowych_parametrow,
-                id_lekarz = lid
+                id_lekarz = e.id_lekarz
             }).Where(e => e.id_lekarz == lid).ToList();
 
             List<PacjentWyslijDTO> lista = new List<PacjentWyslijDTO>();
@@ -111,8 +111,8 @@ namespace MedicalibaryREST.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (db.pacjent.Any(e => e.pesel == viewModel.pesel))
-                return Conflict();
+            //if (db.pacjent.Any(e => e.pesel == viewModel.pesel))
+             //   return Conflict();
 
             var pacjent = new pacjent()
             {
@@ -122,7 +122,8 @@ namespace MedicalibaryREST.Controllers
                 nazwisko = viewModel.nazwisko,
                 pesel = viewModel.pesel,
                 numer_koperty = viewModel.numer_koperty,
-                ilosc_dodatkowych_parametrow = viewModel.ilosc_dodatkowych_parametrow
+                ilosc_dodatkowych_parametrow = viewModel.ilosc_dodatkowych_parametrow,
+                id_lekarz = lid
             };
 
             db.pacjent.Add(pacjent);

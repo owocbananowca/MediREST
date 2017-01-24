@@ -24,6 +24,8 @@ namespace MedicalibaryREST.Models
         [Column(TypeName = "date")]
         public DateTime? koniec_wizyty { get; set; }
 
+        public int lata_waznosc { get; set; }
+
         public virtual lekarz lekarz { get; set; }
 
         public virtual pacjent pacjent { get; set; }

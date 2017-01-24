@@ -28,7 +28,8 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = e.id_lekarz,
                 nazwa = e.nazwa,
                 typ = e.typ,
-                wartosc_domyslna = e.wartosc_domyslna
+                wartosc_domyslna = e.wartosc_domyslna,
+                jednostka = e.jednostka
             }).Where(e => e.id_lekarz == lid).ToList();
 
             List<ParametrNowyWyslij> lista = new List<ParametrNowyWyslij>();
@@ -40,7 +41,8 @@ namespace MedicalibaryREST.Controllers
                     id = e.id,
                     nazwa = e.nazwa,
                     typ = e.typ,
-                    wartosc_domyslna = e.wartosc_domyslna
+                    wartosc_domyslna = e.wartosc_domyslna,
+                    jednostka = e.jednostka
                 });
             }
 
@@ -64,7 +66,8 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = e.id_lekarz,
                 nazwa = e.nazwa,
                 typ = e.typ,
-                wartosc_domyslna = e.wartosc_domyslna
+                wartosc_domyslna = e.wartosc_domyslna,
+                jednostka = e.jednostka
             }).Where(e => e.id_lekarz == lid && e.id == id).ToList();
 
             List<ParametrNowyWyslij> lista = new List<ParametrNowyWyslij>();
@@ -76,7 +79,8 @@ namespace MedicalibaryREST.Controllers
                     id = e.id,
                     nazwa = e.nazwa,
                     typ = e.typ,
-                    wartosc_domyslna = e.wartosc_domyslna
+                    wartosc_domyslna = e.wartosc_domyslna,
+                    jednostka = e.jednostka
                 });
             }
 
@@ -102,7 +106,8 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = lid,
                 nazwa = viewModel.nazwa,
                 typ = viewModel.typ,
-                wartosc_domyslna = viewModel.wartosc_domyslna
+                wartosc_domyslna = viewModel.wartosc_domyslna,
+                jednostka = viewModel.jednostka
             };
 
             db.parametr.Add(parametr);
@@ -133,6 +138,7 @@ namespace MedicalibaryREST.Controllers
             parametr.nazwa = viewModel.nazwa;
             parametr.typ = viewModel.typ;
             parametr.wartosc_domyslna = viewModel.wartosc_domyslna;
+            parametr.jednostka = viewModel.jednostka;
 
             try
             {

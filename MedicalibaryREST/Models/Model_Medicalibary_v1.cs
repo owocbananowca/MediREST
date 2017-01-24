@@ -113,6 +113,10 @@ namespace MedicalibaryREST.Models
                 .Property(e => e.obiekt)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<parametr>()
+                .Property(e => e.jednostka)
+                .IsUnicode(false);
+
             modelBuilder.Entity<modyfikacja>()
                 .Property(e => e.operaca)
                 .IsUnicode(false);
