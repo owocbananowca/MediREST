@@ -28,7 +28,9 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = lid,
                 id_pacjent = e.id_pacjent,
                 data_wizyty = e.data_wizyty,
-                komentarz = e.komentarz
+                komentarz = e.komentarz,
+                koniec_wizyty = e.koniec_wizyty,
+                lata_waznosc = e.lata_waznosc
             }
             ).Where(e => e.id_lekarz == lid).ToList();
 
@@ -41,7 +43,9 @@ namespace MedicalibaryREST.Controllers
                     id = e.id,
                     id_pacjent = e.id_pacjent,
                     data_wizyty = e.data_wizyty,
-                    komentarz = e.komentarz
+                    komentarz = e.komentarz,
+                    koniec_wizyty = e.koniec_wizyty,
+                    lata_waznosc = e.lata_waznosc
                 });
             }
 
@@ -66,7 +70,9 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = e.id_lekarz,
                 id_pacjent = e.id_pacjent,
                 data_wizyty = e.data_wizyty,
-                komentarz = e.komentarz
+                komentarz = e.komentarz,
+                koniec_wizyty = e.koniec_wizyty,
+                lata_waznosc = e.lata_waznosc
             }
             ).Where(e => e.id_lekarz == lid && e.id_pacjent == id).ToList();
 
@@ -79,7 +85,9 @@ namespace MedicalibaryREST.Controllers
                     id = e.id,
                     id_pacjent = e.id_pacjent,
                     data_wizyty = e.data_wizyty,
-                    komentarz = e.komentarz
+                    komentarz = e.komentarz,
+                    koniec_wizyty = e.koniec_wizyty,
+                    lata_waznosc = e.lata_waznosc
                 });
             }
 
@@ -103,9 +111,11 @@ namespace MedicalibaryREST.Controllers
                 id_lekarz = e.id_lekarz,
                 id_pacjent = e.id_pacjent,
                 data_wizyty = e.data_wizyty,
-                komentarz = e.komentarz
+                komentarz = e.komentarz,
+                koniec_wizyty = e.koniec_wizyty,
+                lata_waznosc = e.lata_waznosc
             }
-            ).Where(e => e.id_lekarz == lid && e.id == id).ToList();
+            ).Where(e => e.id == id).ToList();
 
             List<WizytaWyslijDTO> lista = new List<WizytaWyslijDTO>();
 
@@ -116,7 +126,9 @@ namespace MedicalibaryREST.Controllers
                     id = e.id,
                     id_pacjent = e.id_pacjent,
                     data_wizyty = e.data_wizyty,
-                    komentarz = e.komentarz
+                    komentarz = e.komentarz,
+                    koniec_wizyty = e.koniec_wizyty,
+                    lata_waznosc = e.lata_waznosc
                 });
             }
 
@@ -134,14 +146,16 @@ namespace MedicalibaryREST.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (db.wizyta.Any(e => e.data_wizyty == viewModel.data_wizyty))
-                return Conflict();
+            //if (db.wizyta.Any(e => e.data_wizyty == viewModel.data_wizyty))
+            //    return Conflict();
 
             var wizyta = new wizyta()
             {
                 id_pacjent = viewModel.id_pacjent,
                 data_wizyty = viewModel.data_wizyty,
-                komentarz = viewModel.komentarz
+                komentarz = viewModel.komentarz,
+                koniec_wizyty = viewModel.koniec_wizyty,
+                lata_waznosc = viewModel.lata_waznosc
             };
 
             db.wizyta.Add(wizyta);
@@ -167,11 +181,13 @@ namespace MedicalibaryREST.Controllers
             if (!db.wizyta.Any(e => e.id == id))
                 return NotFound();
 
-            wizyta result = db.wizyta.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            wizyta result = db.wizyta.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
 
+            result.id_pacjent = viewModel.id_pacjent;
             result.data_wizyty = viewModel.data_wizyty;
             result.komentarz = viewModel.komentarz;
-            //zmiana pacjenta?
+            result.koniec_wizyty = viewModel.koniec_wizyty;
+            result.lata_waznosc = viewModel.lata_waznosc;
 
             try
             {
@@ -222,10 +238,10 @@ namespace MedicalibaryREST.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (!db.dane_modyfikacji.Any(e => e.id == id))
+            if (!db.wizyta.Any(e => e.id == id))
                 return NotFound();
 
-            wizyta result = db.wizyta.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            wizyta result = db.wizyta.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
 
             db.wizyta.Remove(result);
 

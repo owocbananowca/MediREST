@@ -217,15 +217,12 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DaneModyfikacjiController.cs" />
-    <Compile Include="Controllers\HelloWorldController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LekarzController.cs" />
     <Compile Include="Controllers\MagazynController.cs" />
     <Compile Include="Controllers\ModyfikacjaController.cs" />
     <Compile Include="Controllers\PacjentController.cs" />
     <Compile Include="Controllers\ParametrController.cs" />
     <Compile Include="Controllers\PrzypisanieParametruController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\WersjaController.cs" />
     <Compile Include="Controllers\WizytaController.cs" />
     <Compile Include="Controllers\ZasadaController.cs" />

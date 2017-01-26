@@ -17,5 +17,10 @@ namespace MedicalibaryREST.DTO
 
         [StringLength(255)]
         public string komentarz { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? koniec_wizyty { get; set; }
+
+        public int? lata_waznosc { get; set; }
     }
 }

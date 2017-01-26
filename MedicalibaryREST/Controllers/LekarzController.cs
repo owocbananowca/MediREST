@@ -26,7 +26,8 @@ namespace MedicalibaryREST.Controllers
             var result = db.lekarz.Select(e => new LekarzDTO()
             {
                 Id = e.id,
-                Nazwa = e.nazwa
+                Nazwa = e.nazwa,
+                Haslo = e.haslo
             }
             ).ToList();
 
@@ -47,7 +48,8 @@ namespace MedicalibaryREST.Controllers
             var result = db.lekarz.Select(e => new LekarzDTO()
             {
                 Id = e.id,
-                Nazwa = e.nazwa
+                Nazwa = e.nazwa,
+                Haslo = e.haslo
             }).Where(e => e.Id == id).ToList();
 
             if (result == null)
@@ -67,13 +69,39 @@ namespace MedicalibaryREST.Controllers
             if (db.lekarz.Any(e => e.nazwa == viewModel.Nazwa))
                 return Conflict();
 
+            int random = 0;
+            Random RNG = new Random();
+
+            var result = db.lekarz.Select(e => new LekarzDTO()
+            {
+                Id = e.id
+            }).ToList();
+
+            List<int> ints = result.Select(e => e.Id).ToList();
+
+            bool isNotInList = true;
+            int temp = RNG.Next();
+
+            while (ints.Count > 0 && isNotInList)
+            {
+                temp = RNG.Next();
+                isNotInList = ints.IndexOf(temp) != -1;
+                random = temp;
+                if(ints.Count==0)
+                {
+                    isNotInList = true;
+                }
+            }
+
             var lekarz = new lekarz()
-            { 
-                nazwa = viewModel.Nazwa
+            {
+                id = temp,
+                nazwa = viewModel.Nazwa,
+                haslo = viewModel.Haslo
             };
+            //string dane = lekarz.id.ToString() + " " + temp.ToString();
 
             db.lekarz.Add(lekarz);
-
             try
             {
                 db.SaveChanges();
@@ -86,7 +114,7 @@ namespace MedicalibaryREST.Controllers
         }
 
         [HttpPut]
-        [Route("zmien")]
+        [Route("zmien/{id:int:min(1)}")]
         public IHttpActionResult Zmien(LekarzNowyDTO viewModel, int id)
         {
             if (!ModelState.IsValid)
@@ -101,6 +129,7 @@ namespace MedicalibaryREST.Controllers
 
 
             result.nazwa = viewModel.Nazwa;
+            result.haslo = viewModel.Haslo;
 
             try
             {

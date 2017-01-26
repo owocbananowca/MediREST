@@ -10,9 +10,9 @@ namespace MedicalibaryREST.DTO
 {
     public class ParametrNowyDTO
     {
-        public int? id_lekarz { get; set; }
+        //public int? id_lekarz { get; set; }
 
-        [StringLength(1)]
+        [StringLength(16)]
         public string typ { get; set; }
 
         [StringLength(50)]
@@ -20,5 +20,7 @@ namespace MedicalibaryREST.DTO
 
         [StringLength(50)]
         public string wartosc_domyslna { get; set; }
+
+        public string jednostka { get; set; }
     }
 }

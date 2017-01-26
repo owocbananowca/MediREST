@@ -146,7 +146,7 @@ namespace MedicalibaryREST.Controllers
             if (!db.zasada.Any(e => e.id == id))
                 return NotFound();
 
-            zasada result = db.zasada.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            zasada result = db.zasada.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
 
             result.id_magazyn = viewModel.id_magazynu;
             result.nazwa_atrybutu = viewModel.nazwa_atrybutu;
@@ -175,7 +175,7 @@ namespace MedicalibaryREST.Controllers
             if (!db.zasada.Any(e => e.id == id))
                 return NotFound();
 
-            zasada result = db.zasada.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            zasada result = db.zasada.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
 
             db.zasada.Remove(result);
 

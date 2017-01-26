@@ -19,7 +19,7 @@ namespace MedicalibaryREST.Models
 
         public int? id_lekarz { get; set; }
 
-        [StringLength(1)]
+        [StringLength(16)]
         public string typ { get; set; }
 
         [StringLength(50)]
@@ -27,6 +27,8 @@ namespace MedicalibaryREST.Models
 
         [StringLength(50)]
         public string wartosc_domyslna { get; set; }
+
+        public string jednostka { get; set; }
 
         public virtual lekarz lekarz { get; set; }
 

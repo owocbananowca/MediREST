@@ -38,7 +38,16 @@ namespace MedicalibaryREST.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<lekarz>()
+                .HasKey(e => e.id)
+                .Property(e => e.id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+
+            modelBuilder.Entity<lekarz>()
                 .Property(e => e.nazwa)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<lekarz>()
+                .Property(e => e.haslo)
                 .IsUnicode(false);
 
             modelBuilder.Entity<lekarz>()
@@ -104,6 +113,10 @@ namespace MedicalibaryREST.Models
                 .Property(e => e.obiekt)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<parametr>()
+                .Property(e => e.jednostka)
+                .IsUnicode(false);
+
             modelBuilder.Entity<modyfikacja>()
                 .Property(e => e.operaca)
                 .IsUnicode(false);
@@ -123,7 +136,7 @@ namespace MedicalibaryREST.Models
 
             modelBuilder.Entity<pacjent>()
                 .Property(e => e.pesel)
-                .HasPrecision(11, 0);
+                .IsUnicode(false);
 
             modelBuilder.Entity<pacjent>()
                 .HasMany(e => e.przypisanie_parametru)

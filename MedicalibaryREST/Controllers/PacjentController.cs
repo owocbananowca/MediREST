@@ -32,7 +32,7 @@ namespace MedicalibaryREST.Controllers
                 pesel = e.pesel,
                 numer_koperty = e.numer_koperty,
                 ilosc_dodatkowych_parametrow = e.ilosc_dodatkowych_parametrow,
-                id_lekarz = lid
+                id_lekarz = e.id_lekarz
             }).Where(e => e.id_lekarz == lid).ToList();
 
             List<PacjentWyslijDTO> lista = new List<PacjentWyslijDTO>();
@@ -111,8 +111,8 @@ namespace MedicalibaryREST.Controllers
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            if (db.pacjent.Any(e => e.pesel == viewModel.pesel))
-                return Conflict();
+            //if (db.pacjent.Any(e => e.pesel == viewModel.pesel))
+             //   return Conflict();
 
             var pacjent = new pacjent()
             {
@@ -122,7 +122,8 @@ namespace MedicalibaryREST.Controllers
                 nazwisko = viewModel.nazwisko,
                 pesel = viewModel.pesel,
                 numer_koperty = viewModel.numer_koperty,
-                ilosc_dodatkowych_parametrow = viewModel.ilosc_dodatkowych_parametrow
+                ilosc_dodatkowych_parametrow = viewModel.ilosc_dodatkowych_parametrow,
+                id_lekarz = lid
             };
 
             db.pacjent.Add(pacjent);
@@ -148,7 +149,10 @@ namespace MedicalibaryREST.Controllers
             if (!db.pacjent.Any(e => e.id == id))
                 return NotFound();
 
-            pacjent result = db.pacjent.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            var result = db.pacjent.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
+
+            if (result == null)
+                return NotFound();
 
             result.id_magazyn = viewModel.id_magazyn;
             result.ilosc_dodatkowych_parametrow = viewModel.ilosc_dodatkowych_parametrow;
@@ -157,7 +161,7 @@ namespace MedicalibaryREST.Controllers
             result.numer_koperty = viewModel.numer_koperty;
             result.pesel = viewModel.pesel;
             result.aktywny = viewModel.aktywny;
-
+            
             try
             {
                 db.SaveChanges();
@@ -227,7 +231,7 @@ namespace MedicalibaryREST.Controllers
             if (!db.pacjent.Any(e => e.id == id))
                 return NotFound();
 
-            pacjent result = db.pacjent.FirstOrDefault(e => e.id == id && e.id_lekarz == lid);
+            pacjent result = db.pacjent.FirstOrDefault(e => e.id == id);// && e.id_lekarz == lid);
 
             db.pacjent.Remove(result);
 

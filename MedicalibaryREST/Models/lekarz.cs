@@ -28,6 +28,9 @@ namespace MedicalibaryREST.Models
         [StringLength(50)]
         public string nazwa { get; set; }
 
+        [StringLength(255)]
+        public string haslo { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<dane_modyfikacji> dane_modyfikacji { get; set; }
 

@@ -10,7 +10,7 @@ namespace MedicalibaryREST.DTO
     {
         public int? id_modyfikacja { get; set; }
 
-        public int? id_lekarz { get; set; }
+        //public int? id_lekarz { get; set; }
 
         [StringLength(50)]
         public string nazwa_danej { get; set; }
